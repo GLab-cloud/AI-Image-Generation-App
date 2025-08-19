@@ -9,7 +9,6 @@ const App = () => {
         <Link to="/">
           <img src={logo} alt="logo" className="w-28 object-contain" />
         </Link>
-
         <Link
           to="/create-post"
           className="font-inter font-medium bg-[#6469ff] text-white px-4 py-2 rounded-md"
@@ -23,8 +22,6 @@ const App = () => {
           <Route path="/create-post" element={<CreatePost />} />
         </Routes>
       </main>
-      <Home />
-      <CreatePost />
     </BrowserRouter>
   );
 };
