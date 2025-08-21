@@ -29,6 +29,16 @@ const FormField = ({
           </button>
         )}
       </div>
+      <input
+        type={type}
+        name={name}
+        id={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
+        required
+        className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3 "
+      />
     </div>
   );
 };
