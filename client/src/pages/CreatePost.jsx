@@ -9,7 +9,36 @@ const CreatePost = () => {
   const [form, setForm] = useState({ name: "", prompt: "", photo: "" });
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
-  const generateImg = () => {};
+  const generateImg = async () => {
+    if (form.prompt) {
+      try {
+        setGeneratingImg(true);
+        const response = await fetch(
+          "https://8xdxky-5000.csb.app/api/v1/chatGPT",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+              prompt: form.prompt,
+            }),
+          }
+        );
+
+        const data = await response.json();
+        console.log("prompt return from server:", data.promptfromserver);
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+      } catch (err) {
+        alert(err);
+      } finally {
+        setGeneratingImg(false);
+      }
+    } else {
+      alert("Please provide proper prompt");
+    }
+  };
   const handleSubmit = () => {};
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
