@@ -1,1 +1,1 @@
-# Midjourney-DALL-E-Clone
+# MERN-AI-Image-Generation-App.
